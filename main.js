@@ -4,6 +4,7 @@ let shipTypes = [
   { style: "mantis", minSpeed: 2, maxSpeed: 6 },
   { style: "cricket", minSpeed: 3, maxSpeed: 12 },
 ];
+let backgroundtypes = ["backgroundStars","blueDust",  "coldNebula",  "exoPlanet2",  "exoPlanet3",  "hotNebula",  "iceGiant",  "redGiant",  "sun",  "violetDust",  "yellowDust"];
 let waves = [
   [0, 0, 0],
   [1, 1, 1],
@@ -16,10 +17,34 @@ let waves = [
 
 //vars
 let ships = [];
+let backgrounds = [];
 let score = 0;
 let shipId = 0;
 let time = 0;
 let waveStep = 0;
+
+//background class
+class Background {
+  constructor(backgroundType) {
+    this.element = document.createElement("div");
+    this.element.id=backgroundType;
+    this.element.classList.add("planet");
+    this.element.style.left = getRandomArbitrary(0, document.documentElement.clientWidth) + "px";
+    this.element.style.top = getRandomArbitrary(0, document.documentElement.clientHeight) + "px";
+    let background = document.getElementById("background");
+    background.appendChild(this.element);
+    //
+
+  }
+}
+
+//create background
+function createBackground() {
+    for (let i = 0; i < backgroundtypes.length; i++) {
+        let newBackground = new Background(backgroundtypes[i]);
+    }
+ }
+ createBackground();
 
 //ship class
 
@@ -59,6 +84,12 @@ class Ship {
     ships.splice(ships.indexOf(this), 1);
   }
 }
+
+//set background
+function setBackground() {
+  
+}
+setBackground
 
 //game loop
 
