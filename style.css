@@ -1,0 +1,86 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+#background {
+  width: 100%;
+  height: 100%;
+}
+
+/* background images */
+#backgroundStars {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  background-image: url(./assets/background/Background\ Stars.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+#blueDust {
+  background-image: url(./assets/background/BlueDust.png);
+}
+#coldNebula {
+  background-image: url(./assets/background/Cold\ Nebula.png);
+}
+#exoPlanet2 {
+  background-image: url(./assets/background/Exoplanet2.png);
+}
+#exoPlanet3 {
+  background-image: url(./assets/background/Exoplanet3.png);
+}
+#hotNebula {
+  background-image: url(./assets/background/Hot\ Nebula.png);
+}
+#iceGiant {
+  background-image: url(./assets/background/Ice\ Giant.png);
+}
+#redGiant {
+  background-image: url(./assets/background/Red\ Giant.png);
+}
+#sun {
+  background-image: url(./assets/background/Sun.png);
+}
+#violetDust {
+  background-image: url(./assets/background/VioletDust.png);
+}
+#yellowDust {
+  background-image: url(./assets/background/YellowDust.png);
+}
+
+/* ships images */
+.locust {
+  background-image: url(./assets/ships/Locust.png);
+}
+.mantis {
+  background-image: url(./assets/ships/Mantis.png);
+}
+.cricket {
+  background-image: url(./assets/ships/Сricket.png);
+}
+
+.ship{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    transform: rotate(90deg);
+}
+
+#score{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
