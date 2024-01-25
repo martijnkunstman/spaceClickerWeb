@@ -73,8 +73,10 @@ body {
     position: absolute;
     height: 100px;
     width: 100px;
-    background-size: cover;
+    background-size: contain;
     transform: rotate(90deg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #score{
