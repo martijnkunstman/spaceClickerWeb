@@ -36,6 +36,9 @@ class Ship {
     this.element.id = "ship" + this.shipId;
     this.element.style.top = this.y + "px";
     this.element.style.left = this.x + "px";
+    let size = getRandomArbitrary(50,200);
+    this.element.style.width = size + "px";
+    this.element.style.height = size + "px";
     document.body.appendChild(this.element);
     this.element.addEventListener("click", () => {
       this.remove();
