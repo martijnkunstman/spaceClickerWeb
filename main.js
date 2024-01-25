@@ -4,7 +4,19 @@ let shipTypes = [
   { style: "mantis", minSpeed: 2, maxSpeed: 6 },
   { style: "cricket", minSpeed: 3, maxSpeed: 12 },
 ];
-let backgroundtypes = ["backgroundStars","blueDust",  "coldNebula",  "exoPlanet2",  "exoPlanet3",  "hotNebula",  "iceGiant",  "redGiant",  "sun",  "violetDust",  "yellowDust"];
+let backgroundtypes = [
+  "backgroundStars",
+  "blueDust",
+  "coldNebula",
+  "exoPlanet2",
+  "exoPlanet3",
+  "hotNebula",
+  "iceGiant",
+  "redGiant",
+  "sun",
+  "violetDust",
+  "yellowDust",
+];
 let waves = [
   [0, 0, 0],
   [1, 1, 1],
@@ -27,27 +39,47 @@ let waveStep = 0;
 class Background {
   constructor(backgroundType) {
     this.element = document.createElement("div");
-    this.element.id=backgroundType;
+    this.element.id = backgroundType;
     this.element.classList.add("planet");
-    this.element.style.left = getRandomArbitrary(0, document.documentElement.clientWidth) + "px";
-    this.element.style.top = getRandomArbitrary(0, document.documentElement.clientHeight) + "px";
-    let background = document.getElementById("background");
+    this.x = getRandomArbitrary(0, document.documentElement.clientWidth);
+    this.rotation = 0;
+    this.rotationSpeed = getRandomArbitrary(-0.2, 0.2);
+    this.speed = getRandomArbitrary(0.1, 0.5);
+    this.element.style.left = this.x + "px";
+    this.element.style.top =
+      getRandomArbitrary(0, document.documentElement.clientHeight) + "px";
+      let size = getRandomArbitrary(100, 300);
+      if (this.element.id != "backgroundStars") {
+    this.element.style.width = size+ "px";
+    this.element.style.height =size+ "px";
+    this.element.style.zIndex = size
+      }
+      let background = document.getElementById("background");
     background.appendChild(this.element);
-    //
-
+  }
+  update() {
+    this.x -= this.speed;
+    this.rotation += this.rotationSpeed;
+    if (this.element.id != "backgroundStars") {
+      this.element.style.transform = "rotate(" + this.rotation + "deg)";
+      this.element.style.left = this.x + "px";
+      if (this.x < -100) {
+        this.x = document.documentElement.clientWidth + 100;
+      }
+    }
   }
 }
 
 //create background
 function createBackground() {
-    for (let i = 0; i < backgroundtypes.length; i++) {
-        let newBackground = new Background(backgroundtypes[i]);
-    }
- }
- createBackground();
+  for (let i = 0; i < backgroundtypes.length; i++) {
+    let newBackground = new Background(backgroundtypes[i]);
+    backgrounds.push(newBackground);
+  }
+}
+createBackground();
 
 //ship class
-
 class Ship {
   constructor(shipType, shipId) {
     this.x = document.documentElement.clientWidth;
@@ -61,7 +93,7 @@ class Ship {
     this.element.id = "ship" + this.shipId;
     this.element.style.top = this.y + "px";
     this.element.style.left = this.x + "px";
-    let size = getRandomArbitrary(50,200);
+    let size = getRandomArbitrary(50, 200);
     this.element.style.width = size + "px";
     this.element.style.height = size + "px";
     document.body.appendChild(this.element);
@@ -86,10 +118,8 @@ class Ship {
 }
 
 //set background
-function setBackground() {
-  
-}
-setBackground
+function setBackground() {}
+setBackground;
 
 //game loop
 
@@ -107,6 +137,9 @@ function gameLoop() {
   }
   for (let i = 0; i < ships.length; i++) {
     ships[i].update();
+  }
+  for (let i = 0; i < backgrounds.length; i++) {
+    backgrounds[i].update();
   }
   time++;
   requestAnimationFrame(gameLoop);
