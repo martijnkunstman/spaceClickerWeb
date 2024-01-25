@@ -5,17 +5,17 @@ let shipTypes = [
   { style: "cricket", minSpeed: 3, maxSpeed: 12 },
 ];
 let backgroundtypes = [
-  "backgroundStars",
-  "blueDust",
-  "coldNebula",
-  "exoPlanet2",
-  "exoPlanet3",
-  "hotNebula",
-  "iceGiant",
-  "redGiant",
-  "sun",
-  "violetDust",
-  "yellowDust",
+  ["backgroundStars","background"],
+  ["blueDust","dust"],
+  ["coldNebula","dust"],
+  ["exoPlanet2","planet"],
+  ["exoPlanet3","planet"],
+  ["hotNebula","dust"],
+  ["iceGiant","planet"],
+  ["redGiant","planet"],
+  ["sun","planet"],
+  ["violetDust","dust"],
+  ["yellowDust","dust"]
 ];
 let waves = [
   [0, 0, 0],
@@ -44,9 +44,17 @@ function createBackground() {
 }
 createBackground();
 
+//init
+function init() {
+  window.addEventListener("click", function(event) {
+    let newExplosion = new Explosion(event.clientX, event.clientY);    
+  });
+}
+init();
+
 //game loop
 function gameLoop() {
-  if (time % 100 == 0) {
+  if (time % 200 == 0) {
     for (let i = 0; i < waves[waveStep].length; i++) {
       let newShip = new Ship(shipTypes[waves[waveStep][i]], shipId);
       ships.push(newShip);

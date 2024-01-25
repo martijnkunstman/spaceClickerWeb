@@ -96,3 +96,23 @@ body {
     top:0px;
     left:0px;
 }
+.explosion{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,0) 50%);
+    top:0px;
+    left:0px;
+    margin-left:-50px;
+    margin-top:-50px;
+    z-index:100000000;
+    opacity: 1;
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+  0% { opacity: 1;}
+  99% { opacity: 0.01;width: 10px; height: 10px; margin-left:-5px; margin-top:-5px}
+  100% { opacity: 0;width: 0; height: 0; margin-left:0px; margin-top:0px}
+}
