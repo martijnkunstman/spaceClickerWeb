@@ -35,6 +35,13 @@ let shipId = 0;
 let time = 0;
 let waveStep = 0;
 
+if (localStorage.getItem("score") != null) {
+  score = localStorage.getItem("score");
+}
+else {  
+  localStorage.setItem("score", score);
+}
+
 //create background
 function createBackground() {
   for (let i = 0; i < backgroundtypes.length; i++) {

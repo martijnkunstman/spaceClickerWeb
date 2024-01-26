@@ -21,6 +21,7 @@ class Ship {
     this.element.addEventListener("click", () => {
       this.remove();
       score++;
+      localStorage.setItem("score", score);
       document.getElementById("score").innerHTML = score;
     });
   }
