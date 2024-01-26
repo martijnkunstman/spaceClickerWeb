@@ -41,6 +41,7 @@ if (localStorage.getItem("score") != null) {
 else {  
   localStorage.setItem("score", score);
 }
+document.getElementById("score").innerHTML = score;
 
 //create background
 function createBackground() {
