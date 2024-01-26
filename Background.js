@@ -35,6 +35,13 @@ class Background {
     }
     if (this.element.type == "dust") {
       this.element.style.zIndex = Math.round(this.size) + "0";
+      this.element.style.width = (this.size *5) + "px";
+      this.element.style.height = (this.size * 5) + "px";
+      this.speed = this.speed / 5;
+      this.y = getRandomArbitrary(
+        0 - this.size*5,
+        document.documentElement.clientHeight
+      );
     }
   }
   update() {

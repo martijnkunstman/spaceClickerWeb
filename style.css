@@ -94,7 +94,9 @@ body {
     position: absolute;
     height: 100px;
     width: 100px;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     top:0px;
     left:0px;
 }
